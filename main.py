@@ -25,7 +25,7 @@ app = FastAPI()
 df_games = pd.read_parquet("Datasets/output_steam_games.parquet")
 df_user_items = pd.read_parquet("Datasets/australian_users_items.parquet")
 df_games_and_reviews = pd.read_parquet("Datasets/games_and_reviews.parquet")
-modelo_render = pd.read_parquet("Datasets/modelo_render.parquet")
+modelo_railway = pd.read_parquet("Datasets/modelo_railway.parquet")
 
 
 
@@ -268,7 +268,7 @@ async def recomendacion_juego(id: int):
     
          Un diccionario con 5 juegos similares 
     """
-    game = modelo_render[modelo_render['item_id'] == id]
+    game = modelo_railway[modelo_railway['item_id'] == id]
 
     if game.empty:
         return("El juego '{id}' no posee registros.")
@@ -278,10 +278,10 @@ async def recomendacion_juego(id: int):
 
     # Toma una muestra aleatoria del DataFrame df_games
     sample_size = 2000  # Define el tamaño de la muestra (ajusta según sea necesario)
-    df_sample = modelo_render.sample(n=sample_size, random_state=42)  # Ajusta la semilla aleatoria según sea necesario
+    df_sample = modelo_railway.sample(n=sample_size, random_state=42)  # Ajusta la semilla aleatoria según sea necesario
 
     # Calcula la similitud de contenido solo para el juego dado y la muestra
-    sim_scores = cosine_similarity([modelo_render.iloc[idx, 3:]], df_sample.iloc[:, 3:])
+    sim_scores = cosine_similarity([modelo_railway.iloc[idx, 3:]], df_sample.iloc[:, 3:])
 
     # Obtiene las puntuaciones de similitud del juego dado con otros juegos
     sim_scores = sim_scores[0]
