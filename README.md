@@ -59,6 +59,8 @@ En esta etapa del proyecto, se utilizan los conjuntos de datos obtenidos durante
 
 * **`recomendacion_juego`**: Esta función acepta el parámetro "item_id" de un título de juego y genera una lista que incluye los cinco juegos más similares al ingresado, proporcionando recomendaciones basadas en la similitud de género. Este enfoque busca ofrecer sugerencias relevantes y específicas, teniendo en cuenta las preferencias de género del juego proporcionado. Realizando una comparación  `item_item`.
 
+Notebook [Modelado_ML](/6-Modelado_ML.ipynb)
+
 ### FastAPI
 
 El código para generar la API se encuentra en el archivo [Main](/main.py). En caso de querer ejecutar la API desde localHost se deben seguir los siguientes pasos:
